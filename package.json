@@ -1,4 +1,5 @@
 {
+  "homepage": "http://TheHalalPigeon.github.io/gpt3-ayat",
   "name": "gpt3_ayat",
   "version": "0.1.0",
   "private": true,
@@ -13,9 +14,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "BROWSER=firefox react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build && sw-precache --config=sw-precache-config.js",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.0"
   }
 }
